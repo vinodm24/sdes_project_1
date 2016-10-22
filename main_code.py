@@ -21,23 +21,24 @@ def Charge(Voltage,R,L,C,Initial_Charge,Initial_Current,Tf=25.0,n=1e3):
         Current = np.exp(r1*Time)*((r1*Time+1.0)*C1 + r1*C2)
     return Charge/C,Current*R,Voltage-Charge/C-Current*R,Time
 
-def animate(X1,Y1,X2,Y2,name):
+def animate(X1,Y1,X2,Y2,X3,Y3,name):
     fig = plt.figure()
     ax = plt.axes(xlim=(0,20.0), ylim=(-10.,20.))
     line, = ax.plot([], [], lw=2)
     line1, = ax.plot([], [], lw=2)
+    line2, = ax.plot([], [], lw=2)
 
     def init():
         line.set_data([],[])
         line1.set_data([],[])
-        return line,line1,
+        line2.set_data([],[])
+        return line,line1,line2,
+    
     def animate(i):
-        x = X1[:i]
-        y = Y1[:i]
-        #print x,y
-        line.set_data(x, y)
+        line.set_data(X1[:i], Y1[:i])
         line1.set_data(X2[:i],Y2[:i])
-        return line,line1
+        line2.set_data(X3[:i],Y3[:i])
+        return line,line1,line2,
         
     anim = animation.FuncAnimation(fig, animate, init_func=init,
                                frames=1000, interval=2, blit=True)
@@ -50,4 +51,4 @@ if __name__ == '__main__':
     plt.plot(Time,Voltage_R,'r')
     plt.plot(Time,Voltage_L,'g')
     plt.show()
-    animate(Time,Voltage_C,Time,Voltage_L,'Voltage Across Capacitor')
+    animate(Time,Voltage_C,Time,Voltage_L,Time,Voltage_R,'Voltage Across Elements in a RLC circuit')

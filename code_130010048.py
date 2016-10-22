@@ -47,8 +47,8 @@ def animate(X1,Y1,X2,Y2,X3,Y3,name):
 
 if __name__ == '__main__':
     Voltage_R_ud,Voltage_L_ud,Voltage_C_ud,Time_ud=Voltage_RLC(10,0.5,1,1)
-    Voltage_R_cd,Voltage_L_cd,Voltage_C_cd,Time_cd=Voltage_RLC(10,1,1,1)
-    Voltage_R_od,Voltage_L_od,Voltage_C_od,Time_od=Voltage_RLC(10,2,1,1)
+    Voltage_R_cd,Voltage_L_cd,Voltage_C_cd,Time_cd=Voltage_RLC(10,2,1,1)
+    Voltage_R_od,Voltage_L_od,Voltage_C_od,Time_od=Voltage_RLC(10,4,1,1)
     
     figure(0)
     plt.plot(Time_ud,Voltage_R_ud,label = 'Resistor')

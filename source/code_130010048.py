@@ -6,9 +6,9 @@ from pylab import *
 def Voltage_RLC(Voltage,R,L,C,Initial_Charge=0.0,Initial_Current=0.0,Tf=20):
     Time=np.linspace(0.0,Tf,1000)
     Particular_charge=C*Voltage
-    Delta = (R/C)**2 - 4.0/(L*C) + 0.0j
-    r1 = (-(R/C)-np.sqrt(Delta))/2.0
-    r2 = (-(R/C)+np.sqrt(Delta))/2.0
+    Delta = (R/L)**2 - 4.0/(L*C) + 0.0j
+    r1 = (-(R/L)-np.sqrt(Delta))/2.0
+    r2 = (-(R/L)+np.sqrt(Delta))/2.0
     if r1 != r2:
         C1 = (r2*(Initial_Charge - C*Voltage) - Initial_Current)/(r2-r1)
         C2 = (r1*(Initial_Charge - C*Voltage) - Initial_Current)/(r1-r2)
@@ -24,6 +24,9 @@ def Voltage_RLC(Voltage,R,L,C,Initial_Charge=0.0,Initial_Current=0.0,Tf=20):
 def animate(X1,Y1,X2,Y2,X3,Y3,name):
     fig = plt.figure()
     ax = plt.axes(xlim=(0,20.0), ylim=(-10.,20.))
+    plt.title('Rollno: 130010048', fontweight='bold', fontsize=24)
+    plt.ylabel('Voltage (V)',fontsize = 14)
+    plt.xlabel("Time (s)",fontsize=14)
     line, = ax.plot([], [], lw=2)
     line1, = ax.plot([], [], lw=2)
     line2, = ax.plot([], [], lw=2)
@@ -51,38 +54,35 @@ if __name__ == '__main__':
     Voltage_R_od,Voltage_L_od,Voltage_C_od,Time_od=Voltage_RLC(10,4,1,1)
     
     figure(0)
-    plt.plot(Time_ud,Voltage_R_ud,label = 'Resistor')
-    plt.plot(Time_ud,Voltage_L_ud,label = 'Inductor')
-    plt.plot(Time_ud,Voltage_C_ud,label = 'Capacitor')
+    plt.plot(Time_ud,Voltage_R_ud,label = 'Resistor',color='r')
+    plt.plot(Time_ud,Voltage_L_ud,label = 'Inductor',color='g')
+    plt.plot(Time_ud,Voltage_C_ud,label = 'Capacitor',color='b')
     plt.title('Voltage across Elements with time in Under damped case')
     plt.ylabel('Voltage (V)')
     plt.xlabel('time (s)')
-    plt.legend()
-    plt.savefig('voltage_across_elements_in_Underdamped_case.png')
+    plt.legend(loc = 'lower right')
+    plt.savefig('voltage_across_elements_in_under_damped_case.png')
     
     figure(1)
-    Voltage_R_cd,Voltage_L_cd,Voltage_C_cd,Time_cd=Voltage_RLC(10,1,1,1)
-    plt.plot(Time_cd,Voltage_R_cd,'r',label = 'Resistor')
-    plt.plot(Time_cd,Voltage_L_cd,'g',label = 'Inductor')
-    plt.plot(Time_cd,Voltage_C_cd,'b',label = 'Capacitor')
+    plt.plot(Time_cd,Voltage_R_cd,'r',label = 'Resistor',color='r')
+    plt.plot(Time_cd,Voltage_L_cd,'g',label = 'Inductor',color='g')
+    plt.plot(Time_cd,Voltage_C_cd,'b',label = 'Capacitor',color='b')
     plt.title('Voltage across Elements with time in Critically damped case')
     plt.ylabel('Voltage (V)')
     plt.xlabel('time (s)')
     plt.legend(loc = 'center right')
-    plt.savefig('voltage_across_elements_in_Criticallydamped_case.png')
+    plt.savefig('voltage_across_elements_in_critically_damped_case.png')
     
     figure(2)
-    Voltage_R_cd,Voltage_L_cd,Voltage_C_cd,Time_cd=Voltage_RLC(10,1,1,1)
-    plt.plot(Time_od,Voltage_R_od,'r',label = 'Resistor')
-    plt.plot(Time_od,Voltage_L_od,'g',label = 'Inductor')
-    plt.plot(Time_od,Voltage_C_od,'b',label = 'Capacitor')
+    plt.plot(Time_od,Voltage_R_od,'r',label = 'Resistor',color='r')
+    plt.plot(Time_od,Voltage_L_od,'g',label = 'Inductor',color='g')
+    plt.plot(Time_od,Voltage_C_od,'b',label = 'Capacitor',color='b')
     plt.title('Voltage across Elements with time in Over damped case')
     plt.ylabel('Voltage (V)')
     plt.xlabel('time (s)')
     plt.legend(loc = 'center right')
-    plt.savefig('voltage_across_elements_in_overdamped_case.png')
+    plt.savefig('voltage_across_elements_in_over_damped_case.png')
 
-    animate(Time_ud,Voltage_R_ud,Time_ud,Voltage_L_ud,Time_ud,Voltage_C_ud,'voltage_across_elements_in_Underdamped_case')
-    animate(Time_cd,Voltage_R_cd,Time_cd,Voltage_L_cd,Time_cd,Voltage_C_cd,'voltage_across_elements_in_Critically_damped_case')
-    animate(Time_od,Voltage_R_od,Time_od,Voltage_L_od,Time_od,Voltage_C_od,'voltage_across_elements_in_overdamped_case')
-    
+    animate(Time_ud,Voltage_R_ud,Time_ud,Voltage_L_ud,Time_ud,Voltage_C_ud,'voltage_across_elements_in_under_damped_case')
+    animate(Time_cd,Voltage_R_cd,Time_cd,Voltage_L_cd,Time_cd,Voltage_C_cd,'voltage_across_elements_in_critically_damped_case')
+    animate(Time_od,Voltage_R_od,Time_od,Voltage_L_od,Time_od,Voltage_C_od,'voltage_across_elements_in_over_damped_case')

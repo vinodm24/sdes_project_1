@@ -3,15 +3,9 @@
 %130010048
 \documentclass[12pt, a4paper]{report}
 
-%for matrix
-\usepackage{amsmath}
-
-%for placing the figures at the correct place
-\usepackage{placeins}
-
 %for Graphics
 \usepackage{graphicx}
-\graphicspath{{images/}}
+\graphicspath{}
 
 %for including specific amount of space
 \newcommand\tab[1][1cm]{\hspace*{#1}}
@@ -50,6 +44,7 @@
 \title{\textbf{LC Tank with Resistance}}
 \author{Vinod Kumar Metla}
 \affil{Roll No. : 130010048}
+\date{\today}
 
 \begin{document}
 \maketitle
@@ -64,6 +59,7 @@
 \item Ipython 2.3.0 is used to run the IPython notebook. So the version 2.3.0 or higher is preferrable to run the notebook.
 \item numpy version 1.8.2 is used. So numpy version 1.8.2 or higher is preffered to run the code.
 \item matplotlib version 1.4.2 is used. So matplotlib version 1.4.2 or higher is preffered to run the code. 
+\item ffmpeg is required for the animation to be saved in mp4 format. ffmpeg 2.7.6 was used for it. So, ffmeg with version 2.7.6 or higher is preferrable for running of the python script.
 \end{itemize}
 
 \section*{Governing Equation for the problem}
@@ -95,9 +91,9 @@ The results were plotted showing the voltage across all the elements of the circ
 \textbf{Under Damped case}
 \begin{figure}[H]
   \centering
-  \fbox{\includegraphics[scale=0.7]{voltage_across_elements_in_underdamped_case}}
-  \caption[Voltage vs time]    
-  {\textit{Voltage vs time}
+  \fbox{\includegraphics[scale=0.6]{voltage_across_elements_in_under_damped_case}}
+  \caption[Voltage vs time in Under damped case]    
+  {\textit{Voltage vs time in Under damped case}
   \label{Fig:1}
   \footnotemark.}
 \end{figure}
@@ -105,19 +101,23 @@ The results were plotted showing the voltage across all the elements of the circ
 \textbf{Critically Damped case}
 \begin{figure}[H]
   \centering
-  \fbox{\includegraphics[scale=0.7]{voltage_across_elements_in_criticallydamped_case}}
-  \caption[Voltage vs time]    
-  {\textit{Voltage vs time}
+  \fbox{\includegraphics[scale=0.45]{voltage_across_elements_in_critically_damped_case}}
+  \caption[Voltage vs time in Critically damped case]    
+  {\textit{Voltage vs time in Critically damped case}
   \label{Fig:2}
   \footnotemark.}
 \end{figure}
 \textbf{Over Damped case}
 \begin{figure}[H]
   \centering
-  \fbox{\includegraphics[scale=0.7]{voltage_across_elements_in_overdamped_case}}
-  \caption[Voltage vs time]    
-  {\textit{Voltage vs time}
-  \label{Fig:2}
+  \fbox{\includegraphics[scale=0.45]{voltage_across_elements_in_over_damped_case}}
+  \caption[Voltage vs time in over damped case]    
+  {\textit{Voltage vs time in over damped case}
+  \label{Fig:3}
   \footnotemark.}
 \end{figure}
+
+\bibliographystyle{plain}
+\bibliography{report_130010048}
+
 \end{document}
